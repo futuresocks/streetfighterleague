@@ -1,0 +1,3 @@
+use streetfighterleague;
+
+db.dropDatabase();
