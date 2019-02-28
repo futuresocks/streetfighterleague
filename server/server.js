@@ -15,6 +15,8 @@ MongoClient.connect('mongodb://localhost:27017')
     const db = client.db('streetfighterleague');
     const playersCollection = db.collection('players');
     const fixturesCollection = db.collection('fixtures');
+    const fightersCollection = db.collection('fighters');
+    app.use('/api/fighters', createRouter(fightersCollection));
     app.use('/api/players', createRouter(playersCollection));
     app.use('/api/fixtures', createRouter(fixturesCollection));
   })
