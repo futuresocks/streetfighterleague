@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server:dev": "nodemon server.js",
+    "wipe": "mongo < ./db/wipe.js",
     "seed": "mongo < ./db/seeds.js"
   },
   "keywords": [],
