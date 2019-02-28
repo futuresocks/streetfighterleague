@@ -1,5 +1,6 @@
 const express = require('express');
 const ObjectID = require('mongodb').ObjectID;
+const errorHandler = require('./error_handler');
 
 const createRouter = function(collection) {
 
@@ -10,11 +11,7 @@ const createRouter = function(collection) {
     .find()
     .toArray()
     .then((docs) => res.json(docs))
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.json({ status: 500, error: err });
-    });
+    .catch((err) => errorHandler(err, res))
   });
 
   router.post('/', (req, res) => {
@@ -24,11 +21,7 @@ const createRouter = function(collection) {
     .then((result) => {
       res.json(result.ops[0]);
     })
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.json({ status: 500, error: err });
-    });
+    .catch((err) => errorHandler(err, res));
   });
 
   router.put('/:id', (req, res) => {
@@ -41,11 +34,7 @@ const createRouter = function(collection) {
     .then(result => {
       res.json(result.value);
     })
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.json({ status: 500, error: err });
-    });
+    .catch((err) => errorHandler(err, res));
   });
 
   return router;
