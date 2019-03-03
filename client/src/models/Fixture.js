@@ -1,9 +1,9 @@
-const Fixture = function(playerOne, playerTwo, fighterOne, fighterTwo, date){
+const Fixture = function(playerOne, playerTwo, date){
   this.playerOne = playerOne;
   this.playerTwo = playerTwo;
-  this.fighterOne = fighterOne;
-  this.fighterTwo = fighterTwo;
-  this.date = date;
+  this.fighterOne = null;
+  this.fighterTwo = null;
+  this.date = null;
 }
 
 module.exports = Fixture;
