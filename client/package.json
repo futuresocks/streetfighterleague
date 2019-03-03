@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "mocha ./src/models/specs"
+    "test": "mocha ./src/models/specs",
+    "test:debug": "mocha debug ./src/models/specs"
   },
   "dependencies": {
     "dayjs": "^1.8.8",

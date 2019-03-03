@@ -1,5 +1,6 @@
 const dayjs = require('dayjs');
 const Fixture = require('./fixture');
+const _ = require('lodash');
 
 const FixtureGenerator = function(players, rounds = 1){
   this.players = players;
@@ -30,9 +31,26 @@ FixtureGenerator.prototype.dateMaker = function (startDate, endDate) {
 };
 
 FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
-  const matchups = this.generateRoundRobins;
+  const matchups = this.generateRoundRobins();
   const dates = this.dateMaker(startDate, endDate);
 
-};
+  const gamesPerDay = matchups.length/dates.length
+
+  const chunkedMatchups = _.chunk(matchups, gamesPerDay);
+
+  let fixturesSplitByDay = [];
+
+  dates.forEach((date, index) => {
+    gamesForDate = chunkedMatchups[index];
+    debugger;
+    fixturesForDate = gamesForDate.map(matchup => new Fixture(matchup[0], matchup[1], date));
+    fixturesSplitByDay.push(fixturesForDate);
+  });
+
+  const fixtures = _.flatten(fixturesSplitByDay);
+
+  return fixtures;
+}
+
 
 module.exports = FixtureGenerator;

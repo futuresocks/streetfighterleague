@@ -18,6 +18,10 @@ describe('fixture generator', () => {
     weekendEndDate = dayjs('2019-03-11') //The following Monday
     expectedDates = [startDate, dayjs('2019-03-05'), dayjs('2019-03-06'), dayjs('2019-03-07'), endDate];
     fixtureGenerator = new FixtureGenerator(players);
+    fixture1 = new Fixture(player1, player2, dayjs('2019-03-04'));
+    fixture2 = new Fixture(player1, player3, dayjs('2019-03-05'));
+    fixture3 = new Fixture(player2, player3, dayjs('2019-03-06'));
+    fixtures = [fixture1, fixture2, fixture3]
   })
 
   it('should be able to create round robins', () => {
@@ -53,6 +57,8 @@ describe('fixture generator', () => {
     assert.deepStrictEqual(actual, expectedDates);
   });
 
-  it('should be able to create fixtures');
+  it('should be able to create fixtures', () => {
+    assert.deepStrictEqual(fixtureGenerator.generateFixtures(startDate, dayjs('2019-03-06')), fixtures);
+  });
 
 })

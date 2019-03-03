@@ -3,7 +3,7 @@ const Fixture = function(playerOne, playerTwo, date){
   this.playerTwo = playerTwo;
   this.fighterOne = null;
   this.fighterTwo = null;
-  this.date = null;
+  this.date = date;
 }
 
 module.exports = Fixture;
