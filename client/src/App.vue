@@ -29,6 +29,10 @@ export default {
     .then(res => res.json())
     .then(players => this.players = players);
 
+    fetch("http://localhost:3000/api/fixtures")
+    .then(res => res.json())
+    .then(fixtures => this.fixtures = fixtures);
+
     eventBus.$on('playerNumber-input', number => this.numberPlayers = number);
     eventBus.$on('player-added', player => this.players.push(player));
     eventBus.$on('fixture-created', fixture => this.fixtures.push(fixture));
