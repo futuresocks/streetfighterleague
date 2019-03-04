@@ -12,7 +12,8 @@
   "dependencies": {
     "dayjs": "^1.8.8",
     "lodash": "^4.17.11",
-    "vue": "^2.6.6"
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",

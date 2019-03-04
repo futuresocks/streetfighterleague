@@ -1,0 +1,29 @@
+<template lang="html">
+  <form v-on:submit="handleSubmit">
+    <label for="numPlayers">How many fighters?</label>
+    <input name="numPlayers" type="number" v-model="numPlayers"/>
+    <input type="submit" value="Confirm"/>
+  </form>
+</template>
+
+<script>
+import { eventBus } from '../main';
+
+export default {
+  data(){
+    return {
+      numPlayers: 0
+    }
+  },
+  methods: {
+    handleSubmit(e){
+      e.preventDefault();
+
+      eventBus.$emit('playerNumber-input', this.numPlayers);
+    }
+  }
+}
+</script>
+
+<style lang="css" scoped>
+</style>

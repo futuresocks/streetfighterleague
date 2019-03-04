@@ -42,7 +42,6 @@ FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
 
   dates.forEach((date, index) => {
     gamesForDate = chunkedMatchups[index];
-    debugger;
     fixturesForDate = gamesForDate.map(matchup => new Fixture(matchup[0], matchup[1], date));
     fixturesSplitByDay.push(fixturesForDate);
   });
