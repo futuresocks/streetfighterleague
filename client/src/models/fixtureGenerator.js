@@ -1,14 +1,14 @@
 const dayjs = require('dayjs');
-const Fixture = require('./fixture');
+const Fixture = require('./Fixture');
 const _ = require('lodash');
 
-const FixtureGenerator = function(players, rounds = 1){
+export const FixtureGenerator = function(players, rounds = 1){
   this.players = players;
   this.rounds = rounds;
 }
 
 FixtureGenerator.prototype.generateRoundRobins = function () {
-  permutations = [];
+  let permutations = [];
   for(let x = 0; x < this.rounds; x++){
     this.players.forEach((player, index) => {
       for (let i = index + 1; i < this.players.length; i++){
@@ -38,11 +38,11 @@ FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
 
   const chunkedMatchups = _.chunk(matchups, gamesPerDay);
 
-  let fixturesSplitByDay = [];
+  const fixturesSplitByDay = [];
 
   dates.forEach((date, index) => {
-    gamesForDate = chunkedMatchups[index];
-    fixturesForDate = gamesForDate.map(matchup => new Fixture(matchup[0], matchup[1], date));
+    const gamesForDate = chunkedMatchups[index];
+    const fixturesForDate = gamesForDate.map(matchup => new Fixture(matchup[0], matchup[1], date));
     fixturesSplitByDay.push(fixturesForDate);
   });
 
@@ -50,6 +50,3 @@ FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
 
   return fixtures;
 }
-
-
-module.exports = FixtureGenerator;

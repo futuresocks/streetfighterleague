@@ -22,6 +22,8 @@ export default {
 
       const newPlayer = new Player(this.name);
 
+      this.name = "";
+
       fetch("http://localhost:3000/api/players", {
         method: "POST",
         body: JSON.stringify(newPlayer),

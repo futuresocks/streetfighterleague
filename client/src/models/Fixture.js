@@ -6,4 +6,4 @@ const Fixture = function(playerOne, playerTwo, date){
   this.date = date;
 }
 
-module.exports = Fixture;
+module.exports = Fixture

@@ -2,6 +2,8 @@
   <div>
     <NumberPlayerInput v-if="!players.length && !numberPlayers"/>
     <PlayerForm v-if="numberPlayers && players.length != numberPlayers" :players="players"/>
+    <FixtureForm v-if="numberPlayers && players.length == numberPlayers" :players="players"/>
+    <LeagueTable :players="players"/>
   </div>
 </template>
 
@@ -9,6 +11,8 @@
 import { eventBus } from '@/main'
 import PlayerForm from '@/components/PlayerForm';
 import NumberPlayerInput from '@/components/NumberPlayerInput';
+import FixtureForm from '@/components/FixtureForm';
+import LeagueTable from '@/components/LeagueTable';
 
 export default {
   data(){
@@ -27,7 +31,9 @@ export default {
   },
   components: {
     PlayerForm,
-    NumberPlayerInput
+    NumberPlayerInput,
+    FixtureForm,
+    LeagueTable
   }
 }
 </script>
