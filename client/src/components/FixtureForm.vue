@@ -52,11 +52,6 @@ export default {
         fixture.then(data => eventBus.$emit('fixture-created', data))
       }))
 
-      //Bring in the fixture generator, pass in the rounds and players, generate fixtures using the dates
-
-      //Post all fixtures to the db
-
-
     }
   }
 }
