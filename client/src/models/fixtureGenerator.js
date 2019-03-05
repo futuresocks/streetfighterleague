@@ -30,13 +30,27 @@ FixtureGenerator.prototype.dateMaker = function (startDate, endDate) {
   return dates;
 };
 
+FixtureGenerator.prototype.shuffler = function (array) {
+  for (let index = array.length - 1; index > 0; index --) {
+    let randomIndex = Math.floor(Math.random() * (index + 1));
+    let displacedElement = array[index];
+    array[index] = array[randomIndex];
+    array[randomIndex] = displacedElement;
+  }
+  return array;
+};
+
 FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
   const matchups = this.generateRoundRobins();
   const dates = this.dateMaker(startDate, endDate);
 
+  matchups.forEach(array => this.shuffler(array));
+
+  const shuffledMatchups = this.shuffler(matchups);
+
   const gamesPerDay = matchups.length/dates.length
 
-  const chunkedMatchups = _.chunk(matchups, gamesPerDay);
+  const chunkedMatchups = _.chunk(shuffledMatchups, gamesPerDay);
 
   const fixturesSplitByDay = [];
 
