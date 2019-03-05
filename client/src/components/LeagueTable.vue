@@ -24,7 +24,9 @@ export default {
   },
   computed: {
     sortedPlayers(){
-      return _.orderBy(this.players, ['wins', 'roundsWon'], ['asc', 'desc']);
+      return _.orderBy(this.players, ['wins', (player) => {
+        return player.roundsWon - player.roundsLost
+      }], ['asc', 'desc']);
     }
   }
 }
