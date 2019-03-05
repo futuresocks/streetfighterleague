@@ -3,9 +3,9 @@
     <label for="rounds">How many rounds you after?</label>
     <input name="rounds" v-model="rounds" type="number"/>
     <label for="startDate">Starting from:</label>
-    <input name="startDate" v-model="startDate" type="date"/>
+    <input name="startDate" v-model="startDate" type="date" :min="today | dateFormat"/>
     <label for="endDate">To:</label>
-    <input name="endDate" v-model="endDate" type="date"/>
+    <input name="endDate" v-model="endDate" type="date" :min="startDate"/>
     <input v-if="startDate && endDate && rounds" type="submit" value="Generate Tournament"/>
   </form>
 </template>
@@ -24,7 +24,12 @@ export default {
       fixtures: []
     }
   },
-  props: ['players'],
+  props: ['players', 'today'],
+  filters: {
+    dateFormat(dayjs){
+      return dayjs.format('YYYY-MM-DD')
+    }
+  },
   methods: {
     handleSubmit(e){
       e.preventDefault();
