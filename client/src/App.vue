@@ -3,8 +3,8 @@
     <NumberPlayerInput v-if="!players.length && !numberPlayers"/>
     <PlayerForm v-if="numberPlayers && players.length != numberPlayers" :players="players"/>
     <FixtureForm v-if="numberPlayers && players.length == numberPlayers && !fixtures.length" :players="players"/>
-    <FixtureDisplay v-if="fixtures" :fixtures="fixtures"/>
-    <LeagueTable :players="players"/>
+    <FixtureDisplay v-if="fixtures.length" :fixtures="fixtures"/>
+    <LeagueTable v-if="fixtures.length" :players="players"/>
   </div>
 </template>
 
