@@ -1,7 +1,7 @@
 <template lang="html">
   <form v-on:submit="handleSubmit">
     <label for="numPlayers">How many fighters?</label>
-    <input name="numPlayers" type="number" v-model="numPlayers"/>
+    <input name="numPlayers" type="number" min="2" v-model="numPlayers"/>
     <input type="submit" value="Confirm"/>
   </form>
 </template>
@@ -12,7 +12,7 @@ import { eventBus } from '../main';
 export default {
   data(){
     return {
-      numPlayers: 0
+      numPlayers: 2
     }
   },
   methods: {
