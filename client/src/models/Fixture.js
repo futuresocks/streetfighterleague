@@ -4,6 +4,7 @@ const Fixture = function(playerOne, playerTwo, date){
   this.fighterOne = null;
   this.fighterTwo = null;
   this.date = date;
+  this.winner = winner;
 }
 
 module.exports = Fixture
