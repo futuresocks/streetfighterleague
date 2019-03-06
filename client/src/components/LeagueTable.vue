@@ -9,7 +9,7 @@
       <th>Rounds Lost</th>
       <th>Round Difference</th>
     </tr>
-    <LeagueItem v-for="(player, index) in sortedPlayers" :player="player" :index="index" />
+    <LeagueItem v-for="(player, index) in sortedPlayers" :player="player" :index="index" :key="index + 1" />
   </table>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     sortedPlayers(){
-      return _.orderBy(this.players, ['wins', (player) => {
+      return orderBy(this.players, ['wins', (player) => {
         return player.roundsWon - player.roundsLost
       }], ['asc', 'desc']);
     }
