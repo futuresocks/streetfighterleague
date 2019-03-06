@@ -48,9 +48,19 @@ FixtureGenerator.prototype.generateFixtures = function (startDate, endDate) {
 
   const shuffledMatchups = this.shuffler(matchups);
 
-  const gamesPerDay = matchups.length/dates.length
+  let gamesPerDay = matchups.length/dates.length
+
+  if(gamesPerDay < 1) gamesPerDay = 1;
 
   const chunkedMatchups = _.chunk(shuffledMatchups, gamesPerDay);
+
+  if(chunkedMatchups.length > dates.length){
+    const finalDay = chunkedMatchups[chunkedMatchups.length - 2].concat(chunkedMatchups[chunkedMatchups.length - 1]);
+    chunkedMatchups.splice(chunkedMatchups.length -2, 2, finalDay);
+  } else if(chunkedMatchups.length < dates.length){
+    debugger;
+    dates.length = chunkedMatchups.length
+  }
 
   const fixturesSplitByDay = [];
 
