@@ -1,19 +1,17 @@
 <template lang="html">
-    <div>
-      <li v-for="fixture in sortedFixtures"> {{fixture.playerOne.name}} vs {{fixture.playerTwo.name}}, {{ fixture.date | dateDisplay }}</li>
+    <div id="fixtureDisplay">
+      <FixtureItem v-for="fixture in sortedFixtures" :fixture="fixture" />
     </div>
 </template>
 
 <script>
-import dayjs from 'dayjs';
 import { sortBy } from 'lodash'
+import FixtureItem from '@/components/FixtureItem'
 
 export default {
   props: ['fixtures'],
-  filters: {
-    dateDisplay(date){
-      return dayjs(date).toString();
-    }
+  components: {
+    FixtureItem
   },
   computed: {
     sortedFixtures(){

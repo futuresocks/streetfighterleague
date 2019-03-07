@@ -62,4 +62,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+h1, label,{
+  font-family: 'Press Start 2P', cursive;
+}
+
 </style>
