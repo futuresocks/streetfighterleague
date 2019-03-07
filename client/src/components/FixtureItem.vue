@@ -1,14 +1,12 @@
 <template lang="html">
 
-<div>
-<div v-if="!edit">
-  <h2>{{fixture.playerOne.name}} vs {{fixture.playerTwo.name}}</h2>
-  <h3>{{fixture.date | dateDisplay}}</h3>
-  <button v-if="resultReady" v-on:click="recordResult">Record Result</button>
-</div>
+  <div>
+    <h2>{{fixture.playerOne.name}} vs {{fixture.playerTwo.name}}</h2>
+    <h3>{{fixture.date | dateDisplay}}</h3>
+    <button v-if="resultReady && !edit" v-on:click="recordResult">Record Result</button>
 
-<FixtureResultRecord v-if="edit" :fixture="fixture"/>
-</div>
+    <FixtureResultRecord v-if="edit" :fixture="fixture"/>
+  </div>
 
 </template>
 
