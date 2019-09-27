@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dayjs": "^1.8.8",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "vue": "^2.6.6",
     "vue-router": "^3.0.2"
   },
